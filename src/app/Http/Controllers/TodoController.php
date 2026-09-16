@@ -8,7 +8,7 @@ use App\Todo;
 
 class TodoController extends Controller
 {
-     public function index()
+    public function index()
     {
         $todo = new Todo();
         $todos = $todo->all();
@@ -23,12 +23,10 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {
-        $content = $request->input('content');
-
-        $todo = new Todo();
-
-        $todo->content = $content;
+        $inputs = $request->all();;
         
+        $todo = new Todo();
+        $todo->fill($inputs);
         $todo->save();
 
         return redirect()->route('todo.index');
