@@ -32,4 +32,3 @@ class TodoController extends Controller
         return redirect()->route('todo.index');
     }
 }
-
